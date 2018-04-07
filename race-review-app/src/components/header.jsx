@@ -11,7 +11,6 @@ class Header extends Component {
         if(isAuthenticated) {
             return <button onClick={() => {this.props.dispatch({type: UNAUTH_USER})}}>Sign Out</button>;            
         }
-        return <button>Sign in</button>;
     }
 
     componentWillReceiveProps(newProps) {
@@ -31,6 +30,7 @@ class Header extends Component {
         }
 
         return [
+            <li><Link to="/signup">Sign up</Link></li>,
             <li>
                 <Link to="/signin">Sign In</Link>
             </li>,
