@@ -20,12 +20,12 @@ module.exports = function(app) {
     app.put('/race', requireAuth, Race.editRace);
     app.put('/race/rate', requireAuth, Race.rateRace);
     app.delete('/race', requireAuth, Race.deleteRace);
-    app.get('/race', requireAuth, Race.getRaces);
+    app.get('/race', Race.getRaces);
 
     //Comments
     app.post('/comment/new', requireAuth, Comment.createCommentThread);
     app.post('/comment/reply', requireAuth, Comment.replyComment);
-    app.get('/comment', requireAuth, Comment.getComments);
+    app.get('/comment', Comment.getComments);
     app.put('/comment', requireAuth, Comment.editComment);
     app.delete('/comment', requireAuth, Comment.deleteComment);
 }

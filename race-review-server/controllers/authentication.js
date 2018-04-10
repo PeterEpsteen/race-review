@@ -20,7 +20,14 @@ exports.signup = function(req, res, next) {
     if(!email || !password) {
         return res.status(422).send({error: "Please provide a email, username, and password"});
     }
+
+    else if (password.length < 8) {
+        return res.status(422).send({error: "Please use a password that is at least 8 characters long."})
+    }
     
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+        return res.status(422).send({error: "Please provide a valid email address."});
+    }
     // see if user already exists
     User.findOne({email: email}, (err, existingUser) => {
         if(err) {return next(err);}

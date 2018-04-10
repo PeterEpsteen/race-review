@@ -1,24 +1,37 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
-import Resources from './resources';
+import RaceItem from './race-item';
 import {connect} from 'react-redux';
-
+import { getRaces } from '../actions/index';
 class Home extends Component {
+    componentWillMount() {
+        this.props.getRaces();
+    }
     renderList() {
-        if (this.props.races) {
-            return this.props.races.map(race => <li>race.name</li>);
+        if (this.props.races.raceList) {
+            console.log(this.props.races);
+            return this.props.races.raceList.map(race => <RaceItem key={race._id} race={race}/>);
         }
     }
     render() {
         return(
             <div>
-                <h1>Home</h1>
-                <ul>
-                </ul>
+                <h1>All Races</h1>
+                <div className="col">
+                    <ul className="race-item-list">
+                        {this.renderList()}
+                    </ul>
+                </div>
+                <div className="col"></div>
+                <div className="col"></div>
             </div>
         );
     }
 
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        getRaces: () => dispatch(getRaces())
+    }
 }
 
 function mapStateToProps(state) {
@@ -27,4 +40,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

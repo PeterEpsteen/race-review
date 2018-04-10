@@ -1,6 +1,28 @@
-
+h1 {
+  font-family: 'Barlow', sans-serif;
+  color: #444;
+  text-align: left;
+}
+.logo a {
+  font-family: 'Fugaz One', sans-serif;
+}
 li {
   list-style-type: none;
+}
+
+.main-container {
+  padding: 64px;
+  background-color: #eee;
+  font-family: 'Barlow', sans-serif;
+}
+
+.main-container * {
+  font-family: 'Barlow', sans-serif;
+}
+
+.col {
+  display: flex;
+  flex-direction: row;
 }
 
 .App {
@@ -9,49 +31,148 @@ li {
   height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.sign-in-header {
+  background: dodgerblue !important;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
 
 .header {
-  height: 72px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
+  background-image: url("../assets/img/windy-road.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .header ul {
+  margin: 0;
+  box-sizing: border-box;
+  align-items: center;
   display: flex;
   width: 100%;
-  padding: 16px;
+  padding: 16px 0px 16px 0px;
   justify-content: flex-end;
-  max-width: 1200px;
+  background-color:rgba(0, 0, 0, 0.5);
+}
+.header.sign-in-header ul {
+  justify-content: center;
+  align-items: center;
 }
 
 .header li {
   margin: 0px 32px 0px 32px;
 }
+.header.sign-in-header li {
+  font-size: 1.5rem;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+[class ="header"] li:first-child {
+  margin-right: auto;
+  font-family: 'Barlow', sans-serif;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
 
 .header a {
   text-decoration: none;
-  color: dodgerblue;
+  color: white;
 }
 
+.search-container {
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  flex-wrap: wrap;
+}
+.search-container > *, .search-container .row > * {
+  padding: 8px 0px 8px 8px;
+  font-size: 16px;
+}
+.search-container input:nth-child(1) {
+  flex: 6;
+}
+
+
+.search-container button:nth-of-type(2) {
+  border: none;
+  background: darkslategrey;
+  padding: 0px 16px 0px 16px;
+}
+.search-container button:nth-of-type(1) {
+  flex: 1;
+}
+.search-container .row {
+  display: flex;
+  width: 100%;
+  padding: 16px 0px 0px 0px
+}
+.search-container button:nth-of-type(2):hover {
+  cursor: pointer;
+  background: grey;
+}
+.search-container button img {
+  width: 24px;
+  vertical-align: middle;
+}
+.race-item-list {
+  width: 100%;
+  padding: 0px;
+}
+
+.race-item-list > * {
+  margin-bottom: 32px;
+}
+
+
+/* Race Item */
+.race-item {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px 16px 32px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.race-item:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.race-item .col:first-of-type {
+  border: 1px solid #ddd;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.race-item .col > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.race-item p, .race-item h2 {
+  margin: 2px;
+  color: #222;
+}
+
+.race-item p:first-of-type {
+  color: #666;
+}
 
 
 @keyframes App-logo-spin {

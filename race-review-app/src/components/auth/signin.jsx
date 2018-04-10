@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import {signinUser} from '../../actions';
-import {
-    AUTH_USER
-} from '../../actions/types'
-
-
 
 class Signin extends Component {
     handleFormSubmit({username, password}) {
-        console.log(username, password);
         this.props.signinUser({username, password});
     }
 
@@ -20,14 +13,13 @@ class Signin extends Component {
         if(newProps.authenticated === true) {
             this.props.history.push('/resources');
         }
-        console.log(newProps.authenticated);
     }
 
     renderAlert() {
-        if(this.props.error) {
+        if(this.props.error && this.props.error.page === 'signin') {
             return (
                 <div className="alert">
-                    <strong>Oops!</strong>
+                    <strong>{this.props.error.response.data.error}</strong>
                 </div>
             );
         }
@@ -36,7 +28,8 @@ class Signin extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit = {handleSubmit(this.handleFormSubmit.bind(this))}>
+            <div>
+                <form onSubmit = {handleSubmit(this.handleFormSubmit.bind(this))}>
                 <fieldset>
                     <label htmlFor="">Username:</label>
                     <Field name="username" component="input"  type="text" />
@@ -48,6 +41,8 @@ class Signin extends Component {
                 {this.renderAlert()}
                 <button type="submit">Sign In</button>
             </form>
+            </div>
+            
         );
     }
 }
