@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {AUTH_USER} from '../actions/types'
 import Header from './header/header'
+import AddRace from './add-race';
 import Home from './home'
 import Signin from './auth/signin';
 import Signup from './auth/signup';
@@ -28,12 +29,11 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header />
-            <div className="main-container">
-              <Route exact path="/" component={Home} />
-              <Route path="/signin" component={Signin} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/resources" component={requireAuth(Resources)} />            
-            </div>
+            <Route exact path="/" component={Home} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/resources" component={requireAuth(Resources)} />            
+            <Route path="/signup" component={Signup} />
+            <Route path="/add-race" component={AddRace} />
           </div>
         </Router>
       </Provider>

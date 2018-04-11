@@ -2,7 +2,9 @@ import {
     AUTH_ERROR,
     AUTH_USER,
     GET_RACES,
-    GET_RACES_ERROR
+    GET_RACES_ERROR,
+    GET_RACE_PARAMS,
+    RES_ERROR
 } from './types';
 import axios from 'axios';
 
@@ -41,6 +43,34 @@ export function signUpUser({username, email, password}) {
     }
 }
 
+export function getRaceParams() {
+    return function(dispatch) {
+        axios.get(`${ROOT_URL}/race/params`)
+        .then(res => {
+            return dispatch(raceParamsData(res.data.params));
+        })
+        .catch(err => {
+            return dispatch(resError(err));
+        });
+    }
+}
+export function submitRace(race) {
+    return function(dispatch) {
+        console.log(race);
+    }
+}
+function raceParamsData(data) {
+    return {
+        type: GET_RACE_PARAMS,
+        payload: data
+    }
+}
+export function resError(err) {
+    return {
+        type: RES_ERROR,
+        payload: err
+    }
+}
 export function authError(err) {
     return {
         type: AUTH_ERROR,

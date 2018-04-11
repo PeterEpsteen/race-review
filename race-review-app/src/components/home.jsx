@@ -14,7 +14,7 @@ class Home extends Component {
     }
     render() {
         return(
-            <div>
+            <div className="main-container">
                 <h1>All Races</h1>
                 <div className="col">
                     <ul className="race-item-list">
