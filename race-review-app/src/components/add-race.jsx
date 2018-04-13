@@ -2,18 +2,31 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { getRaceParams, submitRace } from '../actions/index'
+import './add-race.css'
+import {statesArray} from '../utilities/states';
 
 class AddRace extends Component {
     componentWillMount() {
         this.props.dispatch(getRaceParams());
     }
 
-    handleSubmit(form) {
-        this.props.dispatch(submitRace(form))
+    handleSubmit({name, bikeType, raceType, city, state, organizer}) {
+        this.props.submitRace({
+            race: {
+                name: name,
+                bikeType: bikeType,
+                raceType: raceType,
+                location: {
+                    state: state,
+                    city: city
+                },
+                organizer: organizer
+            }
+        });
     }
     render() {
         console.log(this.props.params);
-        const { handleSubmit, submitting } = this.props;
+        const { handleSubmit, submitting, pristine, invalid } = this.props;
         
         const raceTypes = (this.props.params.raceType) ?
         this.props.params.raceType
@@ -27,6 +40,7 @@ class AddRace extends Component {
 
         return (
             <div className="add-race">
+            <div className="form">
             <h1>Add a Race</h1>
                  <form 
                  onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
@@ -42,7 +56,7 @@ class AddRace extends Component {
                 </fieldset>
                 <fieldset>
                     <label>Race Type</label>
-                    <Field name="raceType" component="select">
+                    <Field name={renderField} component="select">
                         {raceTypes}
                     </Field>
                 </fieldset>
@@ -50,17 +64,21 @@ class AddRace extends Component {
                     <label>Location</label>
                     <Field name="city" 
                         placeholder="City"
-                        component="input"/>
+                        component={renderField}/>
+                    <label htmlFor="state">State</label>
                      <Field name="state" 
                         placeholder="State"
-                        component="input"/>
+                        component="select">
+                        {statesArray.map(state => <option key={state} value={state}>{state}</option>)}
+                        </Field>
                 </fieldset>
                 <fieldset>
                     <label>Organizer (optional)</label>
-                    <Field name="organizer" component="input"/>
+                    <Field name="organizer" component={renderField}/>
                 </fieldset>
-                <button type="submit">Save</button>
+                <button disabled={submitting || invalid || pristine} type="submit">Save</button>
             </form>
+            </div>
             </div>
         
         );
@@ -73,18 +91,21 @@ const validate = values => {
     if(!values.name) {
         errors.name = 'Required'
     }
+    else if (values.name.length < 8) {
+        errors.name = "Please enter a name that is at least 8 characters long"
+    }
+    else if (values.name.length > 60) {
+        errors.name = "Please enter a shorter name. (60 characters or less)"
+    }
     if (!values.city) {
         errors.city = 'Required'
-    }
-    if (!values.state) {
-        errors.state = 'Required'
     }
     return errors;
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        dispatch: dispatch
+        submitRace: (race) => dispatch(submitRace(race))
     }
 }
 
@@ -98,11 +119,11 @@ const renderField = ({
     input,
     type,
     placeholder,
-    meta: {touched, error, warning}
+    meta: {touched, active, error, warning}
 }) => (
     <div className="input-group">
         <input {...input} type={type} placeholder = {placeholder}/>
-        {touched && ((error && <span>{error}</span>))}
+        <p> {touched && !active && ((error && <span>{error}</span>))}</p>
     </div>
 );
 

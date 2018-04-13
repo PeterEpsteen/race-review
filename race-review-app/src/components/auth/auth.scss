@@ -1,0 +1,53 @@
+/* sign in */
+
+.sign-in, .sign-up {
+    * { 
+        box-sizing: border-box !important;
+    }
+    fieldset {
+        padding: 0px;
+        margin: 16px 0px 16px 0px;
+    }
+
+    h1 {
+        color: dodgerblue;
+    }
+
+    h4 {
+        margin: 0px;
+    }
+    > .col:nth-child(3) {
+        justify-content: center;
+        align-items: center;
+        margin: 32px;
+    }
+    img {
+        border-radius: 50%;
+    }
+   > .col:nth-child(2) {
+       justify-content: center;
+       align-items: center;
+
+       input {
+           width: 100%;
+       }
+
+       form {
+           width: 100%;
+           padding: 16px 32px 16px 32px;
+       }
+
+       button {
+           width: 100%;
+           background: dodgerblue;
+           border: 0;
+           font-size: 16px;
+           color: white;
+           padding: 12px;
+           font-weight: bold;
+           border-radius: 5px;
+       }
+   }
+
+
+}

@@ -1,74 +1,87 @@
 html {
-  height: 100%; }
-
+  height: 100%;
+}
 #root {
-  height: 100%; }
-
+  height: 100%;
+}
 * {
-  box-sizing: border-box !important; }
-
+  box-sizing: border-box !important;
+}
 body {
   background: #eee;
-  height: 100%; }
+  height: 100%;
+}
 
 fieldset {
   border: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
+  align-items: flex-start;
+}
 
 h1 {
   font-family: 'Barlow', sans-serif;
   color: #444;
-  text-align: left; }
-
+  text-align: left;
+}
 .logo a {
-  font-family: 'Fugaz One', sans-serif; }
-
+  font-family: 'Fugaz One', sans-serif;
+}
 li {
-  list-style-type: none; }
-
+  list-style-type: none;
+}
 .container {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+}
 
 .input-group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; }
-
+  align-items: flex-start;
+}
 .input-group span {
-  color: red; }
+  color: red;
+}
 
 .main-container {
   width: 100%;
   min-height: 100%;
   padding: 32px;
   background-color: white;
-  font-family: 'Barlow', sans-serif; }
+  font-family: 'Barlow', sans-serif;
+}
 
 .main-container * {
-  font-family: 'Barlow', sans-serif; }
+  font-family: 'Barlow', sans-serif;
+}
 
 .col {
   display: flex;
   flex-direction: column;
-  flex: 1; }
+  flex: 1;
+}
 
 .App {
   text-align: center;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 .sign-in-header {
-  background: dodgerblue !important; }
+  background: dodgerblue !important;
+}
+
 
 .add-race {
   display: flex;
   padding: 32px;
   background: #fff;
   height: 100%;
-  flex-direction: column; }
+  flex-direction: column;
+}
+
+
 
 .header {
   display: flex;
@@ -79,7 +92,8 @@ li {
   background-image: url("../assets/img/windy-road.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+}
 
 .header ul {
   margin: 0;
@@ -89,30 +103,34 @@ li {
   width: 100%;
   padding: 16px 0px 16px 0px;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.5); }
-
+  background-color:rgba(0, 0, 0, 0.5);
+}
 .header.sign-in-header ul {
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .header li {
-  margin: 0px 32px 0px 32px; }
-
+  margin: 0px 32px 0px 32px;
+}
 .header.sign-in-header li {
   font-size: 1.5rem;
   margin-top: 16px;
-  margin-bottom: 16px; }
-
-[class="header"] li:first-child {
+  margin-bottom: 16px;
+}
+[class ="header"] li:first-child {
   margin-right: auto;
   font-family: 'Barlow', sans-serif;
   font-size: 2rem;
   color: white;
-  font-weight: bold; }
+  font-weight: bold;
+}
+
 
 .header a {
   text-decoration: none;
-  color: white; }
+  color: white;
+}
 
 .search-container {
   box-sizing: border-box;
@@ -122,45 +140,53 @@ li {
   max-width: 900px;
   padding-top: 64px;
   padding-bottom: 64px;
-  flex-wrap: wrap; }
-
+  flex-wrap: wrap;
+}
 .search-container > *, .search-container .row > * {
   padding: 8px 0px 8px 8px;
-  font-size: 16px; }
-
+  font-size: 16px;
+}
 .search-container input:nth-child(1) {
-  flex: 6; }
+  flex: 6;
+}
+
 
 .search-container button:nth-of-type(2) {
   border: none;
   background: darkslategrey;
-  padding: 0px 16px 0px 16px; }
-
+  padding: 0px 16px 0px 16px;
+}
 .search-container button:nth-of-type(1) {
-  flex: 1; }
-
+  flex: 1;
+}
 .search-container .row {
   display: flex;
   width: 100%;
-  padding: 16px 0px 0px 0px; }
-
+  padding: 16px 0px 0px 0px
+}
 .search-container button:nth-of-type(2):hover {
   cursor: pointer;
-  background: grey; }
-
+  background: grey;
+}
 .search-container button img {
   width: 24px;
-  vertical-align: middle; }
-
+  vertical-align: middle;
+}
 .race-item-list {
   width: 100%;
-  padding: 0px; }
+  padding: 0px;
+}
 
 .race-item-list > * {
-  margin-bottom: 32px; }
+  margin-bottom: 32px;
+}
+
+
+
+
+
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

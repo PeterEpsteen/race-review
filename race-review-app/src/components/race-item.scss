@@ -1,0 +1,39 @@
+/* Race Item */
+.race-item {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 32px 16px 32px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-width: 700px;
+
+    .col:first-of-type {
+        width: 120px;
+        max-width: 120px;
+        border: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 32px;
+      }
+
+      .col > div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      p, h2 {
+        margin: 2px;
+        color: #222;
+      }
+
+      p:first-of-type {
+        color: #666;
+      }
+}
+  
+  .race-item:hover {
+    cursor: pointer;
+    background-color: #eee;
+  }

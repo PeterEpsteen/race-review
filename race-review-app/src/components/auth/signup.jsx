@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import {signUpUser} from '../../actions';
+import './auth.scss';
+import {imgSrc} from './signin';
 
 
 class Signup extends Component {
@@ -30,22 +32,34 @@ class Signup extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit = {handleSubmit(this.handleFormSubmit.bind(this))}>
-                <fieldset>
-                    <label htmlFor="username">Username:</label>
-                    <Field name="username" component="input"  type="text" />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="email">Email:</label>
-                    <Field name="email" component="input"  type="text" />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="password">Password:</label>
-                    <Field name="password" component="input"  type="password"/>
-                </fieldset>
-                {this.renderAlert()}
-                <button type="submit">Sign Up</button>
-            </form>
+            <div className="container main-container sign-up">
+                <div className="col"></div>
+                <div className="col">
+                    <h1>Sign Up</h1>
+                    <h4>Already have an account? <Link to="/signin">Sign In</Link></h4>
+                    <form onSubmit = {handleSubmit(this.handleFormSubmit.bind(this))}>
+                        <fieldset>
+                            <Field name="username" placeholder="Username" component="input"  type="text" />
+                        </fieldset>
+                        <fieldset>
+                            <Field name="email" placeholder="Email" component="input"  type="text" />
+                        </fieldset>
+                        <fieldset>
+                            <Field name="password" placeholder="Password" component="input"  type="password"/>
+                        </fieldset>
+                        <fieldset>
+                            <Field name="confirmPassword" placeholder="Confirm Password" component="input"  type="password"/>
+                        </fieldset>
+                        {this.renderAlert()}
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <div className="col">
+                    <img src={imgSrc} alt="Bike Race"/>
+                </div>
+                <div className="col"></div>
+            </div>
+            
         );
     }
 }

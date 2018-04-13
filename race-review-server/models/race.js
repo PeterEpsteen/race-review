@@ -20,7 +20,7 @@ const raceSchema = new Schema({
     },
     organizer: String,
     postedBy: {type: Schema.Types.ObjectId, ref:'User', required: true},
-    postDate: {type: String, default: Date.now},
+    postDate: {type: String, default: Date.now()},
     ratingCount: {type: Number, default: 0},
     rateValue: {type: Number, default: 0},
     commentThreads: [{type: Schema.Types.ObjectId, ref: 'CommentThread'}],

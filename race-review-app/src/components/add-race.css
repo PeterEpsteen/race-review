@@ -1,0 +1,29 @@
+.add-race {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center; }
+  .add-race * {
+    box-sizing: border-box; }
+  .add-race .form {
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 800px;
+    min-width: 400px; }
+    .add-race .form input, .add-race .form div.input-group {
+      width: 100%; }
+    .add-race .form .input-group + .input-group {
+      margin-top: 16px; }
+    .add-race .form button {
+      background: dodgerblue;
+      border: 1px solid blue;
+      color: white;
+      padding: 8px 16px 8px 16px;
+      font-weight: bold;
+      font-size: 18px;
+      margin-left: auto;
+      display: flex;
+      align-self: flex-start; }
+    .add-race .form p {
+      margin: 0;
+      height: 18px; }

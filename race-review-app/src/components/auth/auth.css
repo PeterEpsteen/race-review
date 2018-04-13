@@ -1,0 +1,39 @@
+/* sign in */
+.sign-in *, .sign-up * {
+  box-sizing: border-box !important; }
+
+.sign-in fieldset, .sign-up fieldset {
+  padding: 0px;
+  margin: 16px 0px 16px 0px; }
+
+.sign-in h1, .sign-up h1 {
+  color: dodgerblue; }
+
+.sign-in h4, .sign-up h4 {
+  margin: 0px; }
+
+.sign-in > .col:nth-child(3), .sign-up > .col:nth-child(3) {
+  justify-content: center;
+  align-items: center;
+  margin: 32px; }
+
+.sign-in img, .sign-up img {
+  border-radius: 50%; }
+
+.sign-in > .col:nth-child(2), .sign-up > .col:nth-child(2) {
+  justify-content: center;
+  align-items: center; }
+  .sign-in > .col:nth-child(2) input, .sign-up > .col:nth-child(2) input {
+    width: 100%; }
+  .sign-in > .col:nth-child(2) form, .sign-up > .col:nth-child(2) form {
+    width: 100%;
+    padding: 16px 32px 16px 32px; }
+  .sign-in > .col:nth-child(2) button, .sign-up > .col:nth-child(2) button {
+    width: 100%;
+    background: dodgerblue;
+    border: 0;
+    font-size: 16px;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 5px; }

@@ -22,7 +22,8 @@ class Header extends Component {
     }
 
     onRouteChange() {
-        this.setState({showLinks: (this.props.location.pathname !== '/signin')});
+        this.setState({showLinks: (this.props.location.pathname !== '/signin' && 
+            this.props.location.pathname !== '/signup' )});
     }
 
     renderSearch() {

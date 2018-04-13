@@ -1,0 +1,39 @@
+.add-race {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    * {
+        box-sizing: border-box;
+    }
+    .form {
+        justify-content: flex-start;
+        align-items: flex-start;
+        max-width: 800px;
+        min-width: 400px;
+        
+        input, div.input-group {
+            width: 100%;
+        }
+
+        .input-group + .input-group {
+            margin-top: 16px;
+        }
+
+        button {
+            background: dodgerblue;
+            border: 1px solid blue;
+            color: white;
+            padding: 8px 16px 8px 16px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: auto;
+            display: flex;
+            align-self: flex-start;
+        }
+        p {
+            margin: 0;
+            height: 18px;
+        }
+    }
+}

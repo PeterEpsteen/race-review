@@ -56,7 +56,16 @@ export function getRaceParams() {
 }
 export function submitRace(race) {
     return function(dispatch) {
-        console.log(race);
+        console.log(localStorage.getItem('token'));
+        axios.post(`${ROOT_URL}/race`, race, {headers: {authorization: localStorage.getItem('token')}})
+        .then(res => {
+            console.log(res);
+            dispatch({type: 'idk', payload: res});
+        })
+        .catch(err => {
+            console.log(err);
+            return dispatch({type: 'errrrr', payload: err});
+        })
     }
 }
 function raceParamsData(data) {
