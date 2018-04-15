@@ -3,8 +3,12 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
     * {
         box-sizing: border-box;
+    }
+    fieldset {
+        text-align: start;
     }
     .form {
         justify-content: flex-start;
@@ -35,5 +39,15 @@
             margin: 0;
             height: 18px;
         }
+    }
+    .col {
+        align-items: center;
+    }
+
+    img {
+        border: 1px solid #999;
+        height: 400px;
+        width: 400px;
+        border-radius: 50%;
     }
 }

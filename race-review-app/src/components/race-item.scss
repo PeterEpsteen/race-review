@@ -1,4 +1,9 @@
 /* Race Item */
+a {
+    text-decoration: none;
+    appearance: none;
+}
+
 .race-item {
     display: flex;
     flex-direction: row;
@@ -6,6 +11,7 @@
     background-color: #fff;
     border: 1px solid #ccc;
     max-width: 700px;
+    margin-bottom: 32px;
 
     .col:first-of-type {
         width: 120px;

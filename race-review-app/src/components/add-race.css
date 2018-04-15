@@ -2,9 +2,12 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex-direction: row; }
   .add-race * {
     box-sizing: border-box; }
+  .add-race fieldset {
+    text-align: start; }
   .add-race .form {
     justify-content: flex-start;
     align-items: flex-start;
@@ -27,3 +30,10 @@
     .add-race .form p {
       margin: 0;
       height: 18px; }
+  .add-race .col {
+    align-items: center; }
+  .add-race img {
+    border: 1px solid #999;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%; }

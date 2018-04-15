@@ -39,7 +39,8 @@ class AddRace extends Component {
         <option name="" id=""></option>;
 
         return (
-            <div className="add-race">
+            <div className="add-race main-container container">
+            <div className="col">
             <div className="form">
             <h1>Add a Race</h1>
                  <form 
@@ -79,6 +80,14 @@ class AddRace extends Component {
                 <button disabled={submitting || invalid || pristine} type="submit">Save</button>
             </form>
             </div>
+            </div>
+            
+            {/* Cartoon */}
+            
+            <div className="col">
+                <img src={require('../assets/img/race.jpg')} alt=""/>
+            </div>
+        
             </div>
         
         );

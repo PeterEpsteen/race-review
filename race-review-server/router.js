@@ -15,7 +15,8 @@ module.exports = function(app) {
     app.post('/signup', Auth.signup);
 
     //Race
-    app.get('/race/params', Race.raceParams)    
+    app.get('/race/params', Race.raceParams);    
+    app.get('/race/:id', Race.getRaceById);
     app.post('/race', requireAuth, Race.createRace);
     app.put('/race', requireAuth, Race.editRace);
     app.put('/race/rate', requireAuth, Race.rateRace);
@@ -25,7 +26,7 @@ module.exports = function(app) {
     //Comments
     app.post('/comment/new', requireAuth, Comment.createCommentThread);
     app.post('/comment/reply', requireAuth, Comment.replyComment);
-    app.get('/comment', Comment.getComments);
+    app.get('/comment/:id', Comment.getComments);
     app.put('/comment', requireAuth, Comment.editComment);
     app.delete('/comment', requireAuth, Comment.deleteComment);
 }

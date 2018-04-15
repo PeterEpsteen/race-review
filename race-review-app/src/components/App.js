@@ -14,6 +14,7 @@ import reducers from '../reducers';
 import Aysnc from '../middlewares/async';
 import requireAuth from './auth/require_auth';
 import ReduxThunk from 'redux-thunk';
+import RaceDetails from './raceDetails/raceDetails'
 
 const createStoreWithMiddleware = applyMiddleware(Aysnc, ReduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/resources" component={requireAuth(Resources)} />            
             <Route path="/signup" component={Signup} />
             <Route path="/add-race" component={AddRace} />
+            <Route path="/race" component={RaceDetails} />
           </div>
         </Router>
       </Provider>

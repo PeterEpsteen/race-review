@@ -1,11 +1,16 @@
 /* Race Item */
+a {
+  text-decoration: none;
+  appearance: none; }
+
 .race-item {
   display: flex;
   flex-direction: row;
   padding: 16px 32px 16px 32px;
   background-color: #fff;
   border: 1px solid #ccc;
-  max-width: 700px; }
+  max-width: 700px;
+  margin-bottom: 32px; }
   .race-item .col:first-of-type {
     width: 120px;
     max-width: 120px;

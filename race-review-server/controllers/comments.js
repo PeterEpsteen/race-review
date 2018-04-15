@@ -3,7 +3,7 @@ const CommentChild = require('../models/comment-child');
 const Race = require('../models/race');
 
 exports.getComments = function(req, res, next) {
-    Race.findOne({_id: req.query.raceId})
+    Race.findOne({_id: req.params.id})
     .exec()
     .then((race) => {
         if (!race) {

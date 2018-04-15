@@ -9,6 +9,16 @@ exports.getRaces = function(req, res, next) {
     .catch(err => res.status(500).send({err: err}));
 }
 
+exports.getRaceById = (req, res, next) => {
+    Race.findById(req.params.id)
+    .populate('postedBy')
+    .exec()
+    .then(race => {
+        return res.send(race);
+    })
+    .catch(err => res.status(404).send({err}));
+}
+
 exports.createRace = function(req, res, next) {
     // Add race
     const raceObj = req.body.race;
