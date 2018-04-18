@@ -1,0 +1,24 @@
+.commentForm form {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+  .commentForm form input[type='submit'] {
+    background: dodgerblue;
+    border: 1px solid #0066ff;
+    padding: 8px 16px 8px 16px;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: auto; }
+  .commentForm form input:disabled {
+    background-color: grey; }
+  .commentForm form input[type='submit']:disabled:hover {
+    cursor: not-allowed;
+    background-color: grey; }
+  .commentForm form span {
+    margin-right: auto;
+    margin-bottom: 16px; }
+  .commentForm form input[type='submit']:hover {
+    cursor: pointer;
+    background-color: #0066ff; }

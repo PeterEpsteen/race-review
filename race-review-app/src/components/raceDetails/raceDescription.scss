@@ -1,0 +1,25 @@
+.raceDescription {
+    text-align: left;
+    background: #fff;
+    padding: 32px;
+    .row {
+        align-items: center;
+        justify-content: space-between;
+    }
+    .starRow {
+        direction: rtl;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-end;
+        button {
+            border: none;
+            font-size: 2rem;
+            color: dodgerblue;
+        }
+        > button:hover:before,
+        > button:hover ~ button:before {
+            content: "\2605";
+            position: absolute;
+        }
+    }
+}

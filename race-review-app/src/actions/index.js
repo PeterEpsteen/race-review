@@ -4,7 +4,11 @@ import {
     GET_RACES,
     GET_RACES_ERROR,
     GET_RACE_PARAMS,
-    RES_ERROR
+    RES_ERROR,
+    GET_RACE,
+    GET_RACE_ERROR,
+    GET_COMMENTS,
+    GET_COMMENTS_ERR
 } from './types';
 import axios from 'axios';
 
@@ -57,7 +61,13 @@ export function getRaceParams() {
 export function submitRace(race) {
     return function(dispatch) {
         console.log(localStorage.getItem('token'));
-        axios.post(`${ROOT_URL}/race`, race, {headers: {authorization: localStorage.getItem('token')}})
+        axios.post(`${ROOT_URL}/race`, 
+                    race, 
+                    {
+                        headers: {
+                        authorization: localStorage.getItem('token')
+                        }
+                    })
         .then(res => {
             console.log(res);
             dispatch({type: 'idk', payload: res});
@@ -95,5 +105,55 @@ export function getRaces() {
                 return dispatch({type: GET_RACES, payload: res.data});
         })
         .catch(err => dispatch({type: GET_RACES_ERROR, payload: err}));
+    }
+}
+
+export function getRace(id) {
+    return function(dispatch) {
+        axios.get(`${ROOT_URL}/race/${id}`)
+        .then(res => dispatch({type: GET_RACE, payload: res.data}))
+        .catch(err => dispatch({type: GET_RACE_ERROR, payload: {error: true, body: err}}));
+    }
+}
+
+export function rateRace(rateObj) {
+    return function(dispatch) {
+        axios.post(`${ROOT_URL}/race/rate`, 
+                    rateObj,  {
+                        headers: {
+                            authorization: localStorage.getItem('token')
+                        }
+                    }
+                )
+            .then(res => {
+                console.log(res.data);
+                dispatch(getRace(rateObj.raceId))
+            })
+            .catch(err => dispatch({type: 'RATE_ERROR', payload: err}));
+    }
+}
+
+export function getComments(id) {
+    return function(dispatch) {
+        axios.get(`${ROOT_URL}/comment/${id}`)
+        .then(res => dispatch({type: GET_COMMENTS, payload: res.data}))
+        .catch(err => dispatch({type: GET_COMMENTS_ERR, err: err}));
+    }
+}
+
+export function submitComment(body) {
+    return function(dispatch) {
+        axios.post(`${ROOT_URL}/comment/new`, 
+                    body,  {
+                        headers: {
+                            authorization: localStorage.getItem('token')
+                        }
+                    }
+                )
+            .then(res => {
+                console.log(res.data);
+                dispatch(getComments(body.race._id));
+            })
+            .catch(err => dispatch({type: 'COMMENT_ERROR', payload: err}));
     }
 }

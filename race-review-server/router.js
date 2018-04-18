@@ -19,7 +19,7 @@ module.exports = function(app) {
     app.get('/race/:id', Race.getRaceById);
     app.post('/race', requireAuth, Race.createRace);
     app.put('/race', requireAuth, Race.editRace);
-    app.put('/race/rate', requireAuth, Race.rateRace);
+    app.post('/race/rate', requireAuth, Race.rateRace);
     app.delete('/race', requireAuth, Race.deleteRace);
     app.get('/race', Race.getRaces);
 

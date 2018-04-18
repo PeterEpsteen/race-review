@@ -1,0 +1,13 @@
+.raceDetails {
+    max-width: 1200px;
+    margin: auto;
+    padding: 32px;
+    .row {
+        flex-direction: row;
+        display: flex;
+        width: 100%;
+    }
+    .col {
+        flex: 1;
+    }
+}

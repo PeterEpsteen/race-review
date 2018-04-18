@@ -25,7 +25,6 @@ class AddRace extends Component {
         });
     }
     render() {
-        console.log(this.props.params);
         const { handleSubmit, submitting, pristine, invalid } = this.props;
         
         const raceTypes = (this.props.params.raceType) ?
@@ -57,7 +56,7 @@ class AddRace extends Component {
                 </fieldset>
                 <fieldset>
                     <label>Race Type</label>
-                    <Field name={renderField} component="select">
+                    <Field name="raceType" component="select">
                         {raceTypes}
                     </Field>
                 </fieldset>
@@ -141,7 +140,8 @@ export default reduxForm({
     form: 'addRace',
     initialValues: {
         bikeType: "Mountain",
-        raceType: "XC"
+        raceType: "XC",
+        state: 'AK'
     },
     validate
 })(AddRace);
