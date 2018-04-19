@@ -42,9 +42,11 @@ exports.createCommentThread = function(req, res, next) {
 
 exports.replyComment = function(req, res, next) {
     const comment = new CommentChild(req.body.comment);
+    comment.set({user: req.user.id});
+    comment.set({parent: req.body.threadId});
     CommentThread.findById(req.body.threadId)
     .exec()
-    .then(thread => {
+    .then((thread) => {
         if (!thread) return res.status(404).send({message: "Thread no found"});
         thread.children.push(comment);
         thread.save((err, thread) => {
@@ -53,7 +55,7 @@ exports.replyComment = function(req, res, next) {
             comment.save((err, comment) => {
                 if (err) return next(err);
                 if (!comment) return res.status(500).send({message: "Error saving comment"});
-                res.json(thread);
+                return res.json({comment});
             });
         });
     })

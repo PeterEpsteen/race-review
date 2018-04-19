@@ -135,6 +135,7 @@ export function rateRace(rateObj) {
 
 export function getComments(id) {
     return function(dispatch) {
+        console.log(id);
         axios.get(`${ROOT_URL}/comment/${id}`)
         .then(res => dispatch({type: GET_COMMENTS, payload: res.data}))
         .catch(err => dispatch({type: GET_COMMENTS_ERR, err: err}));
@@ -150,9 +151,21 @@ export function submitComment(body) {
                         }
                     }
                 )
-            .then(res => {
-                console.log(res.data);
-                dispatch(getComments(body.race._id));
+            .then(res => dispatch(getComments(body.race._id)))
+            .catch(err => dispatch({type: 'COMMENT_ERROR', payload: err}));
+    }
+}
+export function submitReplyComment(body) {
+    return function(dispatch) {
+        axios.post(`${ROOT_URL}/comment/reply`, 
+                    body,  {
+                        headers: {
+                            authorization: localStorage.getItem('token')
+                        }
+                    }
+            ).then(res => {
+                console.log('dispatching...');
+                return dispatch(getComments(body.race._id));
             })
             .catch(err => dispatch({type: 'COMMENT_ERROR', payload: err}));
     }

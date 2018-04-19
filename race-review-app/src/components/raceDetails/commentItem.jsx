@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CommentForm from './commentForm';
 import './commentItem.css'
 
 class CommentItem extends Component {
@@ -6,24 +7,17 @@ class CommentItem extends Component {
         super(props);
         this.state = {
             showReply: false,
-            reply: {
-                body: ''
-            }
         }
-        this.handleChange = this.handleChange.bind(this);
     }
-    handleChange(e) {
-        this.setState({reply: {
-            body: e.target.value
-        }});
+
+    submitReplyComment(body) {
+        this.props.submitReplyComment(body, this.props.comment._id);
+        this.setState({showReply: false});
     }
+
     renderReply() {
         if (this.state.showReply) {
-            return (
-                <div className="row">
-                    <textarea value={this.state.reply.body} onChange={this.handleChange} name="reply" rows="10"></textarea>
-                </div>
-            );
+            return <CommentForm submitComment={this.submitReplyComment.bind(this)}/>
         }
     }
     render() {
@@ -47,12 +41,13 @@ class CommentItem extends Component {
                 </div>
             </div>
             {this.renderReply()}
+            {comment.children.map(child => <CommentChild comment={child} key={child._id}>{child.body}</CommentChild> )}
         </div>
     );
     }
 }
 
-const commentChild = ({comment}) => {
+const CommentChild = ({comment}) => {
     const date = new Date(comment.date);
     const dateString = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
    return (

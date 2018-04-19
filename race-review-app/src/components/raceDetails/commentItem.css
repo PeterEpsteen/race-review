@@ -1,9 +1,11 @@
 .commentItem, .commentChild {
   background: #FFF;
   margin-bottom: 32px;
-  padding: 32px;
+  padding: 32px 32px 8px 32px;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid #888; }
   .commentItem .row, .commentChild .row {
     display: flex;
     justify-content: space-between; }
@@ -22,3 +24,18 @@
   padding-bottom: 32px; }
   .commentContainer textarea {
     width: 100%; }
+  .commentContainer form {
+    display: flex;
+    flex-direction: column; }
+    .commentContainer form button {
+      margin-left: auto;
+      font-size: 16px;
+      border: 0;
+      background-color: dodgerblue;
+      color: white;
+      padding: 8px 16px 8px 16px;
+      border-radius: 5px;
+      margin-top: 8px; }
+  .commentContainer .commentChild {
+    width: 90%;
+    margin-left: auto; }

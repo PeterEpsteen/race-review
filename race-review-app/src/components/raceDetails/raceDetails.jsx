@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import RaceDescription from './raceDescription';
 import CommentForm from './commentForm';
 import CommentItem from './commentItem'
-import { getRace, rateRace, getComments, submitComment } from '../../actions/index';
+import { getRace, rateRace, getComments, submitComment, submitReplyComment } from '../../actions/index';
 import './raceDetails.css';
 
 class RaceDetails extends React.Component {
@@ -24,6 +24,17 @@ class RaceDetails extends React.Component {
             race: this.props.race,
             comment: {body}
         });
+    }
+    submitReplyComment(body, threadId) {
+        this.props.submitReplyComment({
+            threadId: threadId,
+            comment: {
+                body: body
+            },
+            race: {
+                _id: this.props.race._id
+            }
+        })
     }
     renderComments() {
         console.log(this.props.race);
@@ -54,7 +65,7 @@ class RaceDetails extends React.Component {
                                 submitComment={this.submitComment.bind(this)}
                                 commentError={this.props.race.commentError || false}
                             />
-                            {comments.map(comment => <CommentItem comment={comment}/>)}
+                            {comments.map(comment => <CommentItem key={comment._id} submitReplyComment={this.submitReplyComment.bind(this)} comment={comment}/>)}
                                 {/* comments */}
 
                         </div>
@@ -74,7 +85,8 @@ const mapDispatchToProps = (dispatch) => {
         getRace: (id) => dispatch(getRace(id)),
         getComments: (id) => dispatch(getComments(id)),
         rateRace: (rateObj) => dispatch(rateRace(rateObj)),
-        submitComment: (commentObj) => dispatch(submitComment(commentObj))
+        submitComment: (commentObj) => dispatch(submitComment(commentObj)),
+        submitReplyComment: (comObj) => dispatch(submitReplyComment(comObj))
     }
 } 
 

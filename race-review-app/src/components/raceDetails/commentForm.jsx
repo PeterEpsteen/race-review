@@ -17,11 +17,9 @@ class CommentForm extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({disableSubmit: true});
-        console.log(this.state.commentBody);
         if(this.state.commentBody.length > 10) {
             this.props.submitComment(this.state.commentBody);
         }
-        setTimeout(() => this.setState({disableSubmit: false}), 5000);
     }
     render() {
         return (
@@ -32,6 +30,7 @@ class CommentForm extends Component {
                 value={this.state.commentBody} 
                 onChange={this.handleChange}/>
             <span>{`${this.state.commentBody.length} /256`}</span>
+
             <input disabled={this.state.disableSubmit} type="submit" value="Submit"/>
         </form>
         </div>
