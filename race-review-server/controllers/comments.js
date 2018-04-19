@@ -11,6 +11,7 @@ exports.getComments = function(req, res, next) {
         }
         CommentThread.find({race: race})
         .populate('children')
+        .populate('user')
         .exec()
         .then((comment) => {
             if (!comment)

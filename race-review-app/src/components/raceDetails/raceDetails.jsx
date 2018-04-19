@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import RaceDescription from './raceDescription';
 import CommentForm from './commentForm';
+import CommentItem from './commentItem'
 import { getRace, rateRace, getComments, submitComment } from '../../actions/index';
 import './raceDetails.css';
 
@@ -33,8 +34,13 @@ class RaceDetails extends React.Component {
         }
     }
     render () {
-        console.log(this.props.race);
         const comments = (this.props.race.comments || []);
+        if (comments.length > 0) {
+            comments.sort((one, two) => {
+                return new Date(two.date).valueOf() > new Date(one.date).valueOf();
+            });
+        }
+        console.log(comments);
         if (this.props.race) {
             return (
                 <div className="container raceDetails">
@@ -48,7 +54,7 @@ class RaceDetails extends React.Component {
                                 submitComment={this.submitComment.bind(this)}
                                 commentError={this.props.race.commentError || false}
                             />
-                            {comments.map(comment => <p>{comment.body}</p>)}
+                            {comments.map(comment => <CommentItem comment={comment}/>)}
                                 {/* comments */}
 
                         </div>

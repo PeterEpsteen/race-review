@@ -1,0 +1,24 @@
+.commentItem, .commentChild {
+  background: #FFF;
+  margin-bottom: 32px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column; }
+  .commentItem .row, .commentChild .row {
+    display: flex;
+    justify-content: space-between; }
+  .commentItem button, .commentChild button {
+    margin-top: 16px;
+    margin-left: auto;
+    border: 0;
+    background: #FFF;
+    color: dodgerblue; }
+  .commentItem button:hover, .commentChild button:hover {
+    cursor: pointer; }
+
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32px; }
+  .commentContainer textarea {
+    width: 100%; }

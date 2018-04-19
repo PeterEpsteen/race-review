@@ -1,0 +1,30 @@
+.commentItem, .commentChild {
+    background: #FFF;
+    margin-bottom: 32px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    button {
+        margin-top: 16px;
+        margin-left: auto;
+        border: 0;
+        background: #FFF;
+        color: dodgerblue;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 32px;
+    textarea {
+        width: 100%;
+    }
+}
